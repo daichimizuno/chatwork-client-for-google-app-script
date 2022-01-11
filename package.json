@@ -1,0 +1,38 @@
+{
+  "name": "chatwork-client-for-google-app-script",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint . --ext ts,tsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daichimizuno/chatwork-client-for-google-app-script.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daichimizuno/chatwork-client-for-google-app-script/issues"
+  },
+  "homepage": "https://github.com/daichimizuno/chatwork-client-for-google-app-script#readme",
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "glob": "^7.2.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.4",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
