@@ -1,5 +1,6 @@
 import { ChatWorkClient } from './chatwork-client'
 import { Me } from './types/Me'
+import { My } from './types/My'
 
 // eslint-disable-next-line no-unused-vars
 const main = () => {
@@ -11,4 +12,14 @@ const main = () => {
 
   console.log(me)
   console.log(me.account_id)
+
+  // My API
+  const myStatus = chatworkClient.myStatus() as My.Status
+  console.log(JSON.stringify(myStatus))
+
+  const taskParamter = {
+    status: 'open'
+  } as My.TasksParameter
+  const myTasks = chatworkClient.myTasks(taskParamter) as My.Tasks
+  console.log(JSON.stringify(myTasks))
 }

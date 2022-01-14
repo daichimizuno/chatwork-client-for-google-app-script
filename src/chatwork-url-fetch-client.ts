@@ -20,16 +20,20 @@ export class ChatworkUrlFetchClient {
     const options = {
       headers: this.commonChatworkHeader
     }
-    let url = this.baseUrl
+    let url = this.baseUrl + path
 
+    console.log(`params: ${params}`)
     if (params) {
       const keys = Object.keys(params)
       keys.map((key: string) => [
         (url = this.updateQueryStringParameter(url, key, params[key]))
       ])
     }
+
+    console.log(`request url: ${url}`)
     // eslint-disable-next-line no-undef
-    const response = UrlFetchApp.fetch(`${url}${path}`, options)
+    const response = UrlFetchApp.fetch(url, options)
+    console.log(`response : ${response.getContentText()}`)
     return response
   }
 
