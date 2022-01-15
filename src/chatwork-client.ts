@@ -6,11 +6,18 @@ import { My } from './types/My'
 import { Rooms } from './types/Room'
 
 export class ChatWorkClient {
-  baseUrl = 'https://api.chatwork.com/v2'
+  private static instance: ChatWorkClient
   chatworkUrlFetchClient: ChatworkUrlFetchClient
 
-  constructor(token: string) {
+  private constructor(token: string) {
     this.chatworkUrlFetchClient = ChatworkUrlFetchClient.getInstance(token)
+  }
+
+  static getInstance(token: string): ChatWorkClient {
+    if (!this.instance) {
+      this.instance = new ChatWorkClient(token)
+    }
+    return this.instance
   }
 
   getMe(): Me.Me {
@@ -77,3 +84,5 @@ export class ChatWorkClient {
     this.chatworkUrlFetchClient.delete(`/rooms/${roomId}`, data)
   }
 }
+
+export const chatworkClient = ChatWorkClient
