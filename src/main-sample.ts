@@ -1,4 +1,5 @@
 import { ChatWorkClient } from './chatwork-client'
+import { Contacts } from './Contacts'
 import { Me } from './types/Me'
 import { My } from './types/My'
 
@@ -22,4 +23,8 @@ const main = () => {
   } as My.TasksParameter
   const myTasks = chatworkClient.myTasks(taskParamter) as My.Tasks
   console.log(JSON.stringify(myTasks))
+
+  // Contacts API
+  const contacts = chatworkClient.contacts() as Contacts.Contacts[]
+  console.log(JSON.stringify(contacts))
 }
