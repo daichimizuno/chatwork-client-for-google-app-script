@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import { ChatworkUrlFetchClient } from './chatwork-url-fetch-client'
+import { Contacts } from './Contacts'
 import { Me } from './types/Me'
 import { My } from './types/My'
 
@@ -27,5 +28,11 @@ export class ChatWorkClient {
     const response = this.chatworkUrlFetchClient.get('/my/tasks', params)
     const tasks = JSON.parse(response.getContentText()) as My.Tasks
     return tasks
+  }
+
+  contacts(): Contacts.Contacts[] {
+    const response = this.chatworkUrlFetchClient.get('/contacts')
+    const contacts = JSON.parse(response.getContentText()) as Contacts.Contacts[]
+    return contacts
   }
 }
