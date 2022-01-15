@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { ChatworkUrlFetchClient } from './chatwork-url-fetch-client'
-import { Contacts } from './Contacts'
+import { Contacts } from './types/Contacts'
 import { Me } from './types/Me'
 import { My } from './types/My'
 

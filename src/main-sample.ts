@@ -1,5 +1,5 @@
 import { ChatWorkClient } from './chatwork-client'
-import { Contacts } from './Contacts'
+import { Contacts } from './types/Contacts'
 import { Me } from './types/Me'
 import { My } from './types/My'
 
