@@ -22,19 +22,93 @@ export class ChatworkUrlFetchClient {
     }
     let url = this.baseUrl + path
 
-    console.log(`params: ${params}`)
     if (params) {
       const keys = Object.keys(params)
-      keys.map((key: string) => [
-        (url = this.updateQueryStringParameter(url, key, params[key]))
-      ])
+      keys.map(
+        (key: string) =>
+          (url = this.updateQueryStringParameter(url, key, params[key]))
+      )
     }
 
-    console.log(`request url: ${url}`)
+    return this.execute(url, options)
+  }
+
+  post(path: string, data: Object): any {
+    let payload: string = ''
+    const url = this.baseUrl + path
+
+    if (data) {
+      payload = this.createPayload(payload, data)
+    }
+
+    const options = {
+      method: 'post',
+      headers: this.commonChatworkHeader,
+      payload: payload
+    }
+
+    return this.execute(url, options)
+  }
+
+  put(path: string, data: Object): any {
+    let payload: string = ''
+    const url = this.baseUrl + path
+
+    if (data) {
+      payload = this.createPayload(payload, data)
+    }
+
+    const options = {
+      method: 'put',
+      headers: this.commonChatworkHeader,
+      payload: payload
+    }
+
+    return this.execute(url, options)
+  }
+
+  delete(path: string, data: Object): any {
+    let payload: string = ''
+    const url = this.baseUrl + path
+
+    if (data) {
+      payload = this.createPayload(payload, data)
+    }
+
+    const options = {
+      method: 'delete',
+      headers: this.commonChatworkHeader,
+      payload: payload
+    }
+
+    return this.execute(url, options)
+  }
+
+  createPayload(payload: string, data: Object): string {
+    const keys = Object.keys(data)
+    keys.map(
+      (key: string) =>
+        (payload = this.updatePostPayload(payload, key, data[key]))
+    )
+    return payload
+  }
+
+  execute(url: string, options: Object): any {
     // eslint-disable-next-line no-undef
     const response = UrlFetchApp.fetch(url, options)
-    console.log(`response : ${response.getContentText()}`)
     return response
+  }
+
+  private updatePostPayload(
+    payload: string,
+    key: string,
+    value: string
+  ): string {
+    if (payload.length !== 0) {
+      return `${payload}&${key}=${value}`
+    } else {
+      return `${key}=${value}`
+    }
   }
 
   private updateQueryStringParameter(url: string, key: string, value: string) {
