@@ -21,7 +21,7 @@ const main = () => {
   const taskParamter = {
     status: 'open'
   } as My.TasksParameter
-  const myTasks = chatworkClient.myTasks(taskParamter) as My.Tasks
+  const myTasks = chatworkClient.myTasks(taskParamter) as My.Tasks[]
   console.log(JSON.stringify(myTasks))
 
   // Contacts API

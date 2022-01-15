@@ -24,9 +24,9 @@ export class ChatWorkClient {
     return status
   }
 
-  myTasks(params?: My.TasksParameter): My.Tasks {
+  myTasks(params?: My.TasksParameter): My.Tasks[] {
     const response = this.chatworkUrlFetchClient.get('/my/tasks', params)
-    const tasks = JSON.parse(response.getContentText()) as My.Tasks
+    const tasks = JSON.parse(response.getContentText()) as My.Tasks[]
     return tasks
   }
 
