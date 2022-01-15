@@ -21,7 +21,6 @@ export class ChatworkUrlFetchClient {
       headers: this.commonChatworkHeader
     }
     let url = this.baseUrl + path
-
     if (params) {
       const keys = Object.keys(params)
       keys.map(
@@ -29,6 +28,9 @@ export class ChatworkUrlFetchClient {
           (url = this.updateQueryStringParameter(url, key, params[key]))
       )
     }
+    console.log(`request url ${JSON.stringify(url)}`)
+    console.log(`request options ${JSON.stringify(options)}`)
+    console.log(`request params ${JSON.stringify(params)}`)
 
     return this.execute(url, options)
   }
